@@ -59,7 +59,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  enemyMoveSpeed: 1
+  - {fileID: 0}
+  enemyMoveSpeed: 0.5
 --- !u!1 &5867915010088239936
 GameObject:
   m_ObjectHideFlags: 0
