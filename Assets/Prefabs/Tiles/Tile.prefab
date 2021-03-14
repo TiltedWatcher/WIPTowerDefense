@@ -310,6 +310,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aabb0db2bf2c53943824f9a9375b4a35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerCanBePlacedHere: 1
+  tower: {fileID: 1913722470492481462, guid: aaf8d706eeb889b4abd13e5f5a6169ef, type: 3}
 --- !u!65 &2253068175791665999
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -5,12 +5,18 @@ using UnityEngine;
 public class Waypoint : MonoBehaviour{
 
     [SerializeField] bool towerCanBePlacedHere;
+    [SerializeField] GameObject tower;
 
+    public bool TowerCanBePlacedHere {
+        get => towerCanBePlacedHere;
+        set => towerCanBePlacedHere=value;
+    }
 
     void OnMouseDown() {
 
         if (towerCanBePlacedHere) {
-            Debug.Log(transform.name);
+            Instantiate(tower, transform.position, Quaternion.identity);
+            towerCanBePlacedHere = false;
         }
            
     }
