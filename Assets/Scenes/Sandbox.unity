@@ -2556,13 +2556,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1450206747}
-  m_LocalRotation: {x: 0.35020736, y: 0, z: 0, w: 0.9366722}
-  m_LocalPosition: {x: 30, y: 90, z: -80}
+  m_LocalRotation: {x: 0.42261827, y: 0, z: 0, w: 0.9063079}
+  m_LocalPosition: {x: 30, y: 150, z: -100}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 41, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 50, y: 0, z: 0}
 --- !u!1001 &1457573240
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3701,14 +3701,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 508950342282382289, guid: 41ce1b8750f83a042af6cc76865bbcab, type: 3}
-      propertyPath: enemyMoveSpeed
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 508950342282382289, guid: 41ce1b8750f83a042af6cc76865bbcab, type: 3}
-      propertyPath: path.Array.size
-      value: 15
-      objectReference: {fileID: 0}
     - target: {fileID: 508950342282382289, guid: 41ce1b8750f83a042af6cc76865bbcab, type: 3}
       propertyPath: path.Array.data[0]
       value: 

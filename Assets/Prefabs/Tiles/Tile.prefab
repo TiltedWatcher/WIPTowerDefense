@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -0.01}
   m_SizeDelta: {x: 9, y: 9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &11060110054994613
@@ -274,6 +274,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7308614081353290572}
   - component: {fileID: 3622876807915536454}
+  - component: {fileID: 2253068175791665999}
   m_Layer: 0
   m_Name: Tile
   m_TagString: Untagged
@@ -309,3 +310,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aabb0db2bf2c53943824f9a9375b4a35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &2253068175791665999
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7308614081353290571}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 1, z: 10}
+  m_Center: {x: 0, y: -0.5, z: 0}
