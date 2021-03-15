@@ -18,7 +18,10 @@ public class TowerTargetLock : MonoBehaviour{
 
     // Update is called once per frame
     void Update(){
-        AimWeapon();
+        if (target) {
+            AimWeapon();
+        }
+        
         
     }
 
