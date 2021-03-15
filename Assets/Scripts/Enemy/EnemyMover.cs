@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class EnemyMover : MonoBehaviour{
 
+    //parameters
     [SerializeField] List<Waypoint> path;
     [SerializeField][Range(0f, 5f)] float enemyMoveSpeed = 0.5f;
+    const string PATH_OBJECT_TAG = "Path";
 
 
-    void Start(){
+    void Start() {
+        FindPath();
         StartCoroutine(MoveEnemyAlongPath());
+
     }
 
+    private void FindPath() {
+        path.Clear();
+        GameObject waypoints = GameObject.FindGameObjectWithTag(PATH_OBJECT_TAG);
 
+        foreach (Transform child in waypoints.transform) {
+            path.Add(child.GetComponent<Waypoint>());
+        }
+    }
 
     IEnumerator MoveEnemyAlongPath() {
 
@@ -31,6 +42,8 @@ public class EnemyMover : MonoBehaviour{
             }
 
         }
+
+        Destroy(gameObject);
 
     }
 }
