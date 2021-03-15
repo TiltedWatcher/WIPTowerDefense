@@ -37,10 +37,11 @@ public class CoordinateLabel : MonoBehaviour{
     void Update(){
         if (!Application.isPlaying) {
             DisplayCurrentCoordinates();
-            UpdateCoordinateColour();
+            
             
         }
         ToggleLabels();
+        UpdateCoordinateColour();
     }
 
     void OnDestroy() {
