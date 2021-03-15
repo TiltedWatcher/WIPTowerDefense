@@ -12,6 +12,7 @@ public class EnemyMover : MonoBehaviour{
 
     void Start() {
         FindPath();
+        PlaceAtStart();
         StartCoroutine(MoveEnemyAlongPath());
 
     }
@@ -45,5 +46,9 @@ public class EnemyMover : MonoBehaviour{
 
         Destroy(gameObject);
 
+    }
+
+    void PlaceAtStart() {
+        transform.position = path[0].transform.position;
     }
 }
