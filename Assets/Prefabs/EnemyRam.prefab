@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6187798298027526023}
   - component: {fileID: 508950342282382289}
+  - component: {fileID: 3489303326407953906}
+  - component: {fileID: 7264132909333056642}
   m_Layer: 0
   m_Name: EnemyRam
   m_TagString: Untagged
@@ -61,6 +63,32 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   enemyMoveSpeed: 0.5
+--- !u!65 &3489303326407953906
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4480713565103692275}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 6, z: 17}
+  m_Center: {x: 0, y: 3, z: 1.5}
+--- !u!65 &7264132909333056642
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4480713565103692275}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 3.5, z: 12}
+  m_Center: {x: 0, y: 7.5, z: 0}
 --- !u!1 &5867915010088239936
 GameObject:
   m_ObjectHideFlags: 0
