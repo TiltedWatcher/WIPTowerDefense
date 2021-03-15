@@ -13,7 +13,11 @@ public class TowerTargetLock : MonoBehaviour{
     
 
     void Start(){
-        target = FindObjectOfType<EnemyMover>().transform;
+        EnemyMover targetObject = FindObjectOfType<EnemyMover>();
+        if (targetObject) {
+            target = targetObject.transform;
+        }
+        
     }
 
     // Update is called once per frame
