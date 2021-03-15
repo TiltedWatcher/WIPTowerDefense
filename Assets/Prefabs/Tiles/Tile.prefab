@@ -183,6 +183,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3faed6c4f5d2acb449dab0ebfc1ebbdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultColour: {r: 1, g: 1, b: 1, a: 1}
+  blockedColour: {r: 0.38679248, g: 0.38496798, b: 0.38496798, a: 1}
+  labelToggle:
+    m_Name: Label Toggle
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: f3c38f5a-e0d3-4b88-af23-9949faff24e1
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 4cdc65eb-f71f-46d2-b0b0-5c61e623455a
+      m_Path: <Keyboard>/l
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Label Toggle
+      m_Flags: 0
 --- !u!1 &5970958565749789790
 GameObject:
   m_ObjectHideFlags: 0
