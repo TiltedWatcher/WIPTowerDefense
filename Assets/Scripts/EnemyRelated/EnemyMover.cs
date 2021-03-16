@@ -10,6 +10,13 @@ public class EnemyMover : MonoBehaviour{
     const string PATH_OBJECT_TAG = "Path";
 
 
+    //cached references
+    Enemy enemy;
+
+    private void Start() {
+        enemy = GetComponent<Enemy>();
+    }
+
     private void OnEnable() {
         FindPath();
         PlaceAtStart();
@@ -43,6 +50,7 @@ public class EnemyMover : MonoBehaviour{
 
         }
 
+        enemy.StealGold();
         gameObject.SetActive(false);
 
     }

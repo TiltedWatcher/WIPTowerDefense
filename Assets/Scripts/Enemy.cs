@@ -3,13 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour{
-    // Start is called before the first frame update
-    void Start(){
-        
+
+    //parameters
+    [SerializeField] int goldReward;
+    [SerializeField] int goldPenalty;
+
+
+    //cached references
+    Bank bank;
+
+    void Start() {
+        bank = FindObjectOfType<Bank>();
     }
 
-    // Update is called once per frame
-    void Update(){
-        
+    public void DropGoldFromDeath() {
+
+        if (!bank) {return;}
+        bank.DepositGold(goldReward);
     }
+
+    public void StealGold() {
+
+        if (!bank) {return;}
+        bank.WithdrawGold(goldReward);
+    }
+
 }
