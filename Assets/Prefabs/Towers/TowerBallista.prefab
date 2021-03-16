@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6487171075857753635}
   - component: {fileID: 4760367812712692991}
+  - component: {fileID: -2042652184807421720}
   m_Layer: 0
   m_Name: TowerBallista
   m_TagString: Untagged
@@ -46,6 +47,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 6350962148213318894}
+  towerRange: 15
+--- !u!114 &-2042652184807421720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1913722470492481462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 164c4d6717958ec418bd1d6b0d9b361c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4740460032514245159
 GameObject:
   m_ObjectHideFlags: 0
