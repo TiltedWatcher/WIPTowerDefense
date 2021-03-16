@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,26 +11,42 @@ public class TowerTargetLock : MonoBehaviour{
     
     //cached
     Transform target; //Serialized for Debugging Purpose
-    
+    Enemy[] enemies;
+
+    //states
+
 
     void Start(){
-        EnemyMover targetObject = FindObjectOfType<EnemyMover>();
-        if (targetObject) {
-            target = targetObject.transform;
-        }
+
         
     }
 
     // Update is called once per frame
     void Update(){
-        if (target) {
-            AimWeapon();
+        FindClosestTarget();
+        AimWeapon();
+    }
+
+    private void FindClosestTarget() {
+        enemies = FindObjectsOfType<Enemy>();
+        float maxDistance = Mathf.Infinity;
+        Transform currentClosestTarget = null;
+
+        foreach (Enemy enemy in enemies) {
+            float targetDistance = Vector3.Distance(transform.position, enemy.transform.position);
+
+            if (targetDistance < maxDistance) {
+                maxDistance = targetDistance;
+                currentClosestTarget = enemy.transform;
+            }
+
         }
-        
-        
+        target = currentClosestTarget;
     }
 
     void AimWeapon() {
-        weapon.LookAt(target.position);
+        if (target) {
+            weapon.LookAt(target.position);
+        }
     }
 }

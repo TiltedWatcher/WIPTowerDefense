@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3489303326407953906}
   - component: {fileID: 7264132909333056642}
   - component: {fileID: 3595178127224629036}
+  - component: {fileID: -5258758071843927076}
   m_Layer: 0
   m_Name: EnemyRam
   m_TagString: Untagged
@@ -100,6 +101,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e3f596dcf205e44089914113ff36b4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHitPoints: 5
+  currentHitPoints: 0
+--- !u!114 &-5258758071843927076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4480713565103692275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33bbc290afcde9045a3b8cec2042fd09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5867915010088239936
