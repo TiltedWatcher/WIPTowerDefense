@@ -1127,9 +1127,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f54959e3172f446aa0301889b5d319, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minTimeBetweenSpawns: 1
-  maxTimeBetweenSpawns: 2
-  enemyPrefab: {fileID: 0}
+  poolSize: 5
+  minTimeBetweenSpawns: 2
+  maxTimeBetweenSpawns: 4
+  enemyPrefabs:
+    _objects:
+    - {fileID: 4480713565103692275, guid: 41ce1b8750f83a042af6cc76865bbcab, type: 3}
+    _weights:
+    - 1
 --- !u!4 &617512933
 Transform:
   m_ObjectHideFlags: 0

@@ -58,6 +58,7 @@ public class ObjectPool : MonoBehaviour{
     IEnumerator SpawnEnemy() {
 
         while (gameIsRunning) {
+            waitBeforeNextSpawn = UnityEngine.Random.Range(minTimeBetweenSpawns, maxTimeBetweenSpawns);
             EnableAttackerInPool();
             yield return new WaitForSeconds(waitBeforeNextSpawn);
            // Instantiate(pool[index], transform);
