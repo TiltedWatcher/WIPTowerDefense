@@ -7,14 +7,19 @@ public class Waypoint : MonoBehaviour{
 
     //parameters
     [SerializeField] bool towerCanBePlacedHere;
-    [SerializeField] GameObject tower;
+    [SerializeField] Tower towerPrefab;
     [SerializeField] const string TOWERS_PARENT_NAME = "Towers";
 
     //cached references
     GameObject towersParent;
+    TowerSpawner towerSpawner;
 
     private void Awake() {
         GenerateTowerParent();
+    }
+
+    private void Start() {
+        towerSpawner = FindObjectOfType<TowerSpawner>();
     }
 
     private void GenerateTowerParent() {
@@ -32,9 +37,10 @@ public class Waypoint : MonoBehaviour{
     void OnMouseDown() {
 
         if (towerCanBePlacedHere) {
-            GameObject towerReference = Instantiate(tower, transform.position, Quaternion.identity);
-            towerCanBePlacedHere = false;
-            towerReference.transform.SetParent(towersParent.transform);
+
+            bool isPlaced = towerSpawner.CreateTower(towerPrefab, transform.position);
+            TowerCanBePlacedHere = !isPlaced;
+
         }
            
     }

@@ -99,7 +99,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 2,0
+  m_text: 0,0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -329,7 +329,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerCanBePlacedHere: 1
-  tower: {fileID: 1913722470492481462, guid: aaf8d706eeb889b4abd13e5f5a6169ef, type: 3}
+  towerPrefab: {fileID: -2042652184807421720, guid: aaf8d706eeb889b4abd13e5f5a6169ef, type: 3}
 --- !u!65 &2253068175791665999
 BoxCollider:
   m_ObjectHideFlags: 0
