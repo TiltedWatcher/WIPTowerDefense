@@ -10,11 +10,10 @@ public class EnemyMover : MonoBehaviour{
     const string PATH_OBJECT_TAG = "Path";
 
 
-    void Start() {
+    private void OnEnable() {
         FindPath();
         PlaceAtStart();
         StartCoroutine(MoveEnemyAlongPath());
-
     }
 
     private void FindPath() {
@@ -44,7 +43,7 @@ public class EnemyMover : MonoBehaviour{
 
         }
 
-        Destroy(gameObject);
+        gameObject.SetActive(false);
 
     }
 

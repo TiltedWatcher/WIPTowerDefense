@@ -14,7 +14,7 @@ public class EnemyHealth : MonoBehaviour{
 
 
 
-    void Start(){
+    private void OnEnable() {
         currentHitPoints = maxHitPoints;
     }
 
@@ -30,7 +30,7 @@ public class EnemyHealth : MonoBehaviour{
         //code to get the damage amount from the particle System
 
         if (currentHitPoints <=0) {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         
         }
     }
