@@ -6,7 +6,6 @@ using System;
 using UnityEngine.InputSystem;
 
 [ExecuteAlways]
-[RequireComponent(typeof(TextMeshPro))]
 public class CoordinateLabel : MonoBehaviour{
 
     //parameters

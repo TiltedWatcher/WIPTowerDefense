@@ -19,7 +19,7 @@ public class ThisPropertyDrawer: WeightedListPropertyDrawer {
 public class ObjectPool : MonoBehaviour{
 
     //parameters
-    [SerializeField] [Min(1f)] int poolSize;
+    [SerializeField] [Range(0,50)] int poolSize;
     [SerializeField] [Min(1f)] float minTimeBetweenSpawns = 1f;
     [SerializeField] [Min(1f)] float maxTimeBetweenSpawns = 2f;
     [SerializeField] WeightedListOfAttackers enemyPrefabs;

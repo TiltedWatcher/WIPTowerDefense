@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7854236303502231787}
   - component: {fileID: 11060110054994613}
   - component: {fileID: 1819098191290024694}
-  - component: {fileID: 7694882524560984044}
+  - component: {fileID: 3021084318980413177}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -171,7 +171,7 @@ MonoBehaviour:
   _SortingLayer: 0
   _SortingLayerID: 0
   _SortingOrder: 0
---- !u!114 &7694882524560984044
+--- !u!114 &3021084318980413177
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -180,21 +180,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1895404685809818745}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3faed6c4f5d2acb449dab0ebfc1ebbdb, type: 3}
+  m_Script: {fileID: 11500000, guid: 68666082f3beaea4dad786f4fba50251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   defaultColour: {r: 1, g: 1, b: 1, a: 1}
-  blockedColour: {r: 0.38679248, g: 0.38496798, b: 0.38496798, a: 1}
+  blockedColour: {r: 0, g: 0, b: 0, a: 1}
   labelToggleKeybind:
     m_Name: Label Toggle Keybind
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 1cd5e0ed-2070-4483-9be6-88eba524d86a
+    m_Id: c2c88bde-27ab-48d0-b29e-04195c6331e7
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: 
-      m_Id: 407ae95e-4c35-4a22-ae0a-d19f6c45307a
+      m_Id: 56a84aa1-0143-4784-94ed-98cbcc7a96f9
       m_Path: <Keyboard>/l
       m_Interactions: 
       m_Processors: 

@@ -61,4 +61,9 @@ public class Bank: MonoBehaviour {
         var sceneLoader = FindObjectOfType<SceneLoader>();
         sceneLoader.reloadScene(1f);
     }
+
+
+
+
+
 }
