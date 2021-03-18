@@ -11,7 +11,9 @@ public class CoordinateLabel : MonoBehaviour{
 
     //parameters
     [SerializeField] Color defaultColour = Color.white;
-    [SerializeField] Color blockedColour = Color.black;
+    [SerializeField] Color blockedColour = Color.grey;
+    [SerializeField] Color exploredColour = Color.blue;
+    [SerializeField] Color pathColour = Color.yellow;
 
     [Header("Controlls")]
     [SerializeField] InputAction labelToggleKeybind;
@@ -19,17 +21,17 @@ public class CoordinateLabel : MonoBehaviour{
     //cached references
     TextMeshPro label;
     Vector2Int coordinates;
-    Waypoint waypoint;
+    GridManager gridManager;
+    
 
     //states
     [SerializeField]
 
     void Awake() {
         labelToggleKeybind.Enable();
-
+        gridManager = FindObjectOfType<GridManager>();
         label = GetComponent<TextMeshPro>();
         label.enabled = false;
-        waypoint = GetComponentInParent<Waypoint>();
         DisplayCurrentCoordinates();
         UpdateCoordinateColour();
 
@@ -50,11 +52,26 @@ public class CoordinateLabel : MonoBehaviour{
     }
 
     void UpdateCoordinateColour() {
-        if (waypoint.TowerCanBePlacedHere) {
-            label.color = defaultColour;
-        } else {
-            label.color = blockedColour;
+
+        if (!gridManager) {
+            return;
         }
+        Node node = gridManager.GetNode(coordinates);
+        if (node == null) {
+            return;
+        }
+
+        if (!node.canBeWalkedOn) {
+            label.color = blockedColour;
+        } else if (node.isInPath) {
+            label.color = pathColour;
+        } else if (node.isExplored) {
+            label.color = exploredColour;
+        } else {
+            label.color = defaultColour;
+        }
+        
+
     }
 
 
