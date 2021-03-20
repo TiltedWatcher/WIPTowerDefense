@@ -6,7 +6,7 @@ using UnityEngine;
 public class EnemyMover : MonoBehaviour{
 
     //parameters
-    [SerializeField] List<Waypoint> path;
+    [SerializeField] List<Tile> path;
     [SerializeField][Range(0f, 5f)] float enemyMoveSpeed = 0.5f;
     const string PATH_OBJECT_TAG = "Path";
 
@@ -30,7 +30,7 @@ public class EnemyMover : MonoBehaviour{
 
         foreach (Transform child in waypoints.transform) {
 
-            var waypoint = child.GetComponent<Waypoint>();
+            var waypoint = child.GetComponent<Tile>();
             if (waypoint) {
                 path.Add(waypoint);
             }
@@ -40,7 +40,7 @@ public class EnemyMover : MonoBehaviour{
 
     IEnumerator MoveEnemyAlongPath() {
 
-        foreach (Waypoint waypoint in path) {
+        foreach (Tile waypoint in path) {
 
             Vector3 startPos = transform.position;
             Vector3 endPos = waypoint.transform.position;

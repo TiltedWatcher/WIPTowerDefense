@@ -18,7 +18,7 @@ public class CoordinateLabel : MonoBehaviour{
     //cached references
     TextMeshPro label;
     Vector2Int coordinates;
-    Waypoint waypoint;
+    Tile waypoint;
 
     //states
     [SerializeField]
@@ -28,7 +28,7 @@ public class CoordinateLabel : MonoBehaviour{
 
         label = GetComponent<TextMeshPro>();
         label.enabled = false;
-        waypoint = GetComponentInParent<Waypoint>();
+        waypoint = GetComponentInParent<Tile>();
         DisplayCurrentCoordinates();
         UpdateCoordinateColour();
 

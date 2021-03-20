@@ -38,4 +38,14 @@ public class GridManager : MonoBehaviour{
         }
         
     }
+
+   
+
+    public void BlockNode(Vector2Int coordinates) {
+
+        if (grid.ContainsKey(coordinates)) {
+            grid[coordinates].canBeWalkedOn = false;
+        }
+
+    }
 }
