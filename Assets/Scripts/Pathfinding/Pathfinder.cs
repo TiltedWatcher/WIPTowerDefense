@@ -7,6 +7,7 @@ public class Pathfinder : MonoBehaviour{
 
     //parameters
     const int amountOfDirections = 4;
+    const float pathfinderStartingDelay = 0.1f;
     [SerializeField] Vector2Int[] directions = { Vector2Int.right, Vector2Int.left, Vector2Int.up, Vector2Int.down };
     [SerializeField] Vector2Int startCoordinates;
     [SerializeField] Vector2Int destinationCoordinates;
@@ -42,14 +43,15 @@ public class Pathfinder : MonoBehaviour{
     void Start(){
         startNode = gridManager.Grid[startCoordinates];
         destinationNode = gridManager.Grid[destinationCoordinates];
-        BreadthFirstSearch();
-        BuildPath();
+        StartCoroutine(DelayPathfinder());
     }
 
     private void ExploreNeighbours() {
         List<Node> neighbours = new List<Node>();
-        
 
+        if (!currentSearchNode.canBeWalkedOn) {
+            return;
+        }
         for (int i = 0; i < directions.Length; i++) {
             Vector2Int neighbourCoordinates = currentSearchNode.coordinates + directions[i];
            
@@ -60,9 +62,9 @@ public class Pathfinder : MonoBehaviour{
         }
 
         foreach (Node neighbour in neighbours) {
-
+            Debug.Log($"{neighbour.coordinates} can be walked on: {neighbour.canBeWalkedOn}");
             if (!reached.ContainsKey(neighbour.coordinates) && neighbour.canBeWalkedOn) {
-
+                Debug.Log($"{neighbour.coordinates} is the child node to {currentSearchNode.coordinates} in the path");
                 neighbour.parentNode = currentSearchNode;
                 reached.Add(neighbour.coordinates, neighbour);
                 frontierExploredNodes.Enqueue(neighbour);
@@ -80,8 +82,8 @@ public class Pathfinder : MonoBehaviour{
         while (frontierExploredNodes.Count > 0 && isRunning) {
 
             currentSearchNode = frontierExploredNodes.Dequeue();
-            currentSearchNode.isExplored = true;
             ExploreNeighbours();
+            currentSearchNode.isExplored = true;
 
             if (currentSearchNode.coordinates == destinationCoordinates) {
                 isRunning = false;
@@ -106,5 +108,12 @@ public class Pathfinder : MonoBehaviour{
 
         path.Reverse();
         return path;
+    }
+
+    IEnumerator DelayPathfinder() {
+        yield return new WaitForEndOfFrame();
+        BreadthFirstSearch();
+        BuildPath();
+
     }
 }

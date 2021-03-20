@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Waypoint : MonoBehaviour{
+public class Tile : MonoBehaviour{
 
     //parameters
     [SerializeField] bool towerCanBePlacedHere;
@@ -13,13 +13,30 @@ public class Waypoint : MonoBehaviour{
     //cached references
     GameObject towersParent;
     TowerSpawner towerSpawner;
+    GridManager gridManager;
+
+    //Debugging
+    [SerializeField] Node thisTilesNode;
+
+    //states
+    Vector2Int coordinates = new Vector2Int();
 
     private void Awake() {
+        gridManager = FindObjectOfType<GridManager>();
         GenerateTowerParent();
     }
 
     private void Start() {
         towerSpawner = FindObjectOfType<TowerSpawner>();
+        if (gridManager) {
+            
+            coordinates = gridManager.GetCoordinatesFromPosition(transform.position);
+            thisTilesNode = gridManager.GetNode(coordinates);
+            if (!towerCanBePlacedHere) {
+                gridManager.BlockNode(coordinates);
+            }
+        }
+        
     }
 
     private void GenerateTowerParent() {
