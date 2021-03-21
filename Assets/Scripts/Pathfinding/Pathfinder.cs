@@ -8,6 +8,7 @@ public class Pathfinder : MonoBehaviour{
     //parameters
     const int amountOfDirections = 4;
     const float pathfinderStartingDelay = 0.1f;
+    const string RECALCULATE_PATH_MESSAGE_METHOD_NAME = "RecalculatePath";
     [SerializeField] Vector2Int[] directions = { Vector2Int.right, Vector2Int.left, Vector2Int.up, Vector2Int.down };
     [SerializeField] Vector2Int startCoordinates;
     public Vector2Int StartCoordinates {get => startCoordinates;}
@@ -52,8 +53,13 @@ public class Pathfinder : MonoBehaviour{
     }
 
     public List<Node> GetNewPath() {
+        return GetNewPath(StartCoordinates);
+        ;
+    }    
+    
+    public List<Node> GetNewPath(Vector2Int coordinates) {
         gridManager.ResetNodes();
-        BreadthFirstSearch();
+        BreadthFirstSearch(coordinates);
         return BuildPath();
     }
 
@@ -84,15 +90,15 @@ public class Pathfinder : MonoBehaviour{
 
     }
 
-    void BreadthFirstSearch() {
+    void BreadthFirstSearch(Vector2Int startCoords) {
         bool isRunning = true;
         frontierExploredNodes.Clear();
         reached.Clear();
         startNode.canBeWalkedOn = true;
         destinationNode.canBeWalkedOn = true;
 
-        frontierExploredNodes.Enqueue(startNode);
-        reached.Add(startCoordinates, startNode);
+        frontierExploredNodes.Enqueue(grid[startCoords]);
+        reached.Add(startCoords, startNode);
 
         while (frontierExploredNodes.Count > 0 && isRunning) {
 
@@ -147,4 +153,9 @@ public class Pathfinder : MonoBehaviour{
         GetNewPath();
 
     }
+
+    public void NotifyReceivers() {
+        BroadcastMessage(RECALCULATE_PATH_MESSAGE_METHOD_NAME, false, SendMessageOptions.DontRequireReceiver) ;
+    }
+
 }

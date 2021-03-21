@@ -60,6 +60,7 @@ public class Tile : MonoBehaviour{
             bool isPlaced = towerSpawner.CreateTower(towerPrefab, transform.position);
             if (isPlaced) {
                 gridManager.BlockNode(coordinates);
+                pathfinder.NotifyReceivers();
             }
             
         }
