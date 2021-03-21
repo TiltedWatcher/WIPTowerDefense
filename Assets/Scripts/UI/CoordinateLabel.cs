@@ -21,27 +21,30 @@ public class CoordinateLabel : MonoBehaviour{
     //cached references
     TextMeshPro label;
     Vector2Int coordinates;
+    Tile thisTile;
     GridManager gridManager;
     
 
     //states
-    [SerializeField]
+    
 
     void Awake() {
         labelToggleKeybind.Enable();
         gridManager = FindObjectOfType<GridManager>();
         label = GetComponent<TextMeshPro>();
-        label.enabled = false;
+        thisTile = GetComponentInParent<Tile>();
+        label.enabled = true;
         DisplayCurrentCoordinates();
         UpdateCoordinateColour();
+        
 
     }
 
     void Update(){
         if (!Application.isPlaying) {
             DisplayCurrentCoordinates();
-            
-            
+            UpdateCoordinateColour();
+            ToggleLabels();
         }
         ToggleLabels();
         UpdateCoordinateColour();
@@ -61,7 +64,7 @@ public class CoordinateLabel : MonoBehaviour{
             return;
         }
 
-        if (!node.canBeWalkedOn) {
+        if (!node.canBeWalkedOn || !thisTile.TowerCanBePlacedHere) {
             label.color = blockedColour;
         } else if (node.isInPath) {
             label.color = pathColour;

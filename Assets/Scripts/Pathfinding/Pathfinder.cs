@@ -10,7 +10,9 @@ public class Pathfinder : MonoBehaviour{
     const float pathfinderStartingDelay = 0.1f;
     [SerializeField] Vector2Int[] directions = { Vector2Int.right, Vector2Int.left, Vector2Int.up, Vector2Int.down };
     [SerializeField] Vector2Int startCoordinates;
+    public Vector2Int StartCoordinates {get => startCoordinates;}
     [SerializeField] Vector2Int destinationCoordinates;
+    public Vector2Int DestinationCoordinates {get => destinationCoordinates;}
 
 
     //cached Nodes
@@ -29,9 +31,13 @@ public class Pathfinder : MonoBehaviour{
 
 
     void Awake() {
+
         gridManager = FindObjectOfType<GridManager>();
         if (gridManager) {
             grid = gridManager.Grid;
+            startNode = grid[startCoordinates];
+            destinationNode = grid[destinationCoordinates];
+            
         }
         if (directions.Length > amountOfDirections) {
             directions = new Vector2Int[4] { Vector2Int.right, Vector2Int.left, Vector2Int.up, Vector2Int.down };
@@ -41,8 +47,7 @@ public class Pathfinder : MonoBehaviour{
     }
 
     void Start(){
-        startNode = gridManager.Grid[startCoordinates];
-        destinationNode = gridManager.Grid[destinationCoordinates];
+
         StartCoroutine(DelayPathfinder());
     }
 
@@ -83,6 +88,8 @@ public class Pathfinder : MonoBehaviour{
         bool isRunning = true;
         frontierExploredNodes.Clear();
         reached.Clear();
+        startNode.canBeWalkedOn = true;
+        destinationNode.canBeWalkedOn = true;
 
         frontierExploredNodes.Enqueue(startNode);
         reached.Add(startCoordinates, startNode);

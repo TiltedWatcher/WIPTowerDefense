@@ -58,7 +58,6 @@ public class Tile : MonoBehaviour{
         if (gridManager.GetNode(coordinates).canBeWalkedOn && !pathfinder.WillBlockPath(coordinates)) {
 
             bool isPlaced = towerSpawner.CreateTower(towerPrefab, transform.position);
-            TowerCanBePlacedHere = !isPlaced;
             if (isPlaced) {
                 gridManager.BlockNode(coordinates);
             }
