@@ -6,17 +6,22 @@ using UnityEngine;
 public class EnemyMover : MonoBehaviour{
 
     //parameters
-    [SerializeField] List<Tile> path;
+    [SerializeField] List<Node> path = new List<Node>();
     [SerializeField][Range(0f, 5f)] float enemyMoveSpeed = 0.5f;
-    const string PATH_OBJECT_TAG = "Path";
+
 
 
     //cached references
     Enemy enemy;
+    GridManager gridManager;
+    Pathfinder pathfinder;
 
-    private void Start() {
+    private void Awake() {
         enemy = GetComponent<Enemy>();
+        pathfinder = FindObjectOfType<Pathfinder>();
+        gridManager = FindObjectOfType<GridManager>();
     }
+
 
     private void OnEnable() {
         FindPath();
@@ -26,24 +31,16 @@ public class EnemyMover : MonoBehaviour{
 
     private void FindPath() {
         path.Clear();
-        GameObject waypoints = GameObject.FindGameObjectWithTag(PATH_OBJECT_TAG);
+        path = pathfinder.GetNewPath();
 
-        foreach (Transform child in waypoints.transform) {
-
-            var waypoint = child.GetComponent<Tile>();
-            if (waypoint) {
-                path.Add(waypoint);
-            }
-            
-        }
     }
 
     IEnumerator MoveEnemyAlongPath() {
 
-        foreach (Tile waypoint in path) {
+        for (int i = 0; i< path.Count; i++) {
 
             Vector3 startPos = transform.position;
-            Vector3 endPos = waypoint.transform.position;
+            Vector3 endPos = gridManager.GetWorldPositionFromCoordinates(path[i].coordinates);
             float travelPercent = 0;
 
             transform.LookAt(endPos);
@@ -66,6 +63,6 @@ public class EnemyMover : MonoBehaviour{
     }
 
     void PlaceAtStart() {
-        transform.position = path[0].transform.position;
+        transform.position = gridManager.GetWorldPositionFromCoordinates(pathfinder.StartCoordinates);
     }
 }
