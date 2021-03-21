@@ -57,6 +57,10 @@ public class TowerTargetLock : MonoBehaviour{
 
     void AimWeapon() {
 
+        if (!target) {
+            return;
+        }
+
         distanceToCurrentTarget = Vector3.Distance(transform.position, target.transform.position);
 
         if (target) {

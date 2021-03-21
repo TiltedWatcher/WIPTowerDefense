@@ -14,6 +14,7 @@ public class Tile : MonoBehaviour{
     GameObject towersParent;
     TowerSpawner towerSpawner;
     GridManager gridManager;
+    Pathfinder pathfinder;
 
     //Debugging
     [SerializeField] Node thisTilesNode;
@@ -24,6 +25,7 @@ public class Tile : MonoBehaviour{
     private void Awake() {
         gridManager = FindObjectOfType<GridManager>();
         GenerateTowerParent();
+        pathfinder = FindObjectOfType<Pathfinder>();
     }
 
     private void Start() {
@@ -53,11 +55,14 @@ public class Tile : MonoBehaviour{
 
     void OnMouseDown() {
 
-        if (towerCanBePlacedHere) {
+        if (gridManager.GetNode(coordinates).canBeWalkedOn && !pathfinder.WillBlockPath(coordinates)) {
 
             bool isPlaced = towerSpawner.CreateTower(towerPrefab, transform.position);
             TowerCanBePlacedHere = !isPlaced;
-
+            if (isPlaced) {
+                gridManager.BlockNode(coordinates);
+            }
+            
         }
            
     }

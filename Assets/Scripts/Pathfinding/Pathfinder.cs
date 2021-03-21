@@ -46,6 +46,12 @@ public class Pathfinder : MonoBehaviour{
         StartCoroutine(DelayPathfinder());
     }
 
+    public List<Node> GetNewPath() {
+        gridManager.ResetNodes();
+        BreadthFirstSearch();
+        return BuildPath();
+    }
+
     private void ExploreNeighbours() {
         List<Node> neighbours = new List<Node>();
 
@@ -62,9 +68,9 @@ public class Pathfinder : MonoBehaviour{
         }
 
         foreach (Node neighbour in neighbours) {
-            Debug.Log($"{neighbour.coordinates} can be walked on: {neighbour.canBeWalkedOn}");
+            //Debug.Log($"{neighbour.coordinates} can be walked on: {neighbour.canBeWalkedOn}");
             if (!reached.ContainsKey(neighbour.coordinates) && neighbour.canBeWalkedOn) {
-                Debug.Log($"{neighbour.coordinates} is the child node to {currentSearchNode.coordinates} in the path");
+                //Debug.Log($"{neighbour.coordinates} is the child node to {currentSearchNode.coordinates} in the path");
                 neighbour.parentNode = currentSearchNode;
                 reached.Add(neighbour.coordinates, neighbour);
                 frontierExploredNodes.Enqueue(neighbour);
@@ -75,6 +81,8 @@ public class Pathfinder : MonoBehaviour{
 
     void BreadthFirstSearch() {
         bool isRunning = true;
+        frontierExploredNodes.Clear();
+        reached.Clear();
 
         frontierExploredNodes.Enqueue(startNode);
         reached.Add(startCoordinates, startNode);
@@ -110,10 +118,26 @@ public class Pathfinder : MonoBehaviour{
         return path;
     }
 
+    public bool WillBlockPath(Vector2Int coordinates) {
+        if (grid.ContainsKey(coordinates)) {
+            bool previousState = grid[coordinates].canBeWalkedOn;
+            grid[coordinates].canBeWalkedOn = false;
+            List<Node> newPath = GetNewPath();
+            grid[coordinates].canBeWalkedOn = previousState;
+
+            if (newPath.Count <=1) {
+                GetNewPath();
+                return true;
+            }
+
+        }
+        return false;
+    }
+
+
     IEnumerator DelayPathfinder() {
         yield return new WaitForEndOfFrame();
-        BreadthFirstSearch();
-        BuildPath();
+        GetNewPath();
 
     }
 }
